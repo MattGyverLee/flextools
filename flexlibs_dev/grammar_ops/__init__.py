@@ -7,6 +7,7 @@ Categories, and other grammar-related data in FLEx.
 Submodules:
     - pos_crud: Parts of Speech CRUD operations
     - pos_advanced: Advanced POS operations
+    - gramcat_ops: Grammatical Categories operations
 
 Author: FlexTools Development Team - Phase 2
 Date: 2025-11-22
@@ -25,6 +26,25 @@ from .pos_crud import (
     POSGetSubcategories,
 )
 
+from .pos_advanced import (
+    POSAddSubcategory,
+    POSRemoveSubcategory,
+    POSGetCatalogSourceId,
+    POSGetInflectionClasses,
+    POSGetAffixSlots,
+    POSGetEntryCount,
+)
+
+from .gramcat_ops import (
+    GramCatGetAll,
+    GramCatCreate,
+    GramCatDelete,
+    GramCatGetName,
+    GramCatSetName,
+    GramCatGetSubcategories,
+    GramCatGetParent,
+)
+
 __all__ = [
     # POS CRUD operations
     'POSGetAll',
@@ -37,4 +57,21 @@ __all__ = [
     'POSGetAbbreviation',
     'POSSetAbbreviation',
     'POSGetSubcategories',
+
+    # POS Advanced operations
+    'POSAddSubcategory',
+    'POSRemoveSubcategory',
+    'POSGetCatalogSourceId',
+    'POSGetInflectionClasses',
+    'POSGetAffixSlots',
+    'POSGetEntryCount',
+
+    # Grammatical Categories operations
+    'GramCatGetAll',
+    'GramCatCreate',
+    'GramCatDelete',
+    'GramCatGetName',
+    'GramCatSetName',
+    'GramCatGetSubcategories',
+    'GramCatGetParent',
 ]

@@ -1,11 +1,24 @@
 """
-FlexLibs Development - Complete Data Access Initiative
-========================================================
+FlexLibs Development Module
 
-This module contains the development of ~290 new Pythonic wrapper methods
-for full CRUD access to the FLEx data model.
+This module contains Pythonic wrapper methods for FLEx data model access.
+Part of the Complete Data Access initiative to add ~290 methods for full CRUD access.
 
-This is organized into clusters matching the PROJECT_BOARD.md structure.
+Author: FlexTools Development Team
+Date: 2025-11-22
 """
 
-__version__ = "2.4.0-dev"
+from .text_ops import (
+    TextCoreOperations,
+    TextAdvancedOperations,
+    ParagraphCRUDOperations,
+)
+
+__all__ = [
+    'TextCoreOperations',
+    'TextAdvancedOperations',
+    'ParagraphCRUDOperations',
+]
+
+__version__ = "0.1.0"
+__author__ = "FlexTools Development Team"

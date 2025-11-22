@@ -136,11 +136,106 @@ def resolve_analysis(analysis_or_hvo: Union[Any, HVO], project: Any) -> Optional
     return resolve_object(analysis_or_hvo, project)
 
 
+# Phase 2 Resolvers
+
+def resolve_pos(pos_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve a part of speech reference to an IPartOfSpeech object.
+
+    Args:
+        pos_or_hvo: Either an IPartOfSpeech object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        IPartOfSpeech object or None if not found
+    """
+    return resolve_object(pos_or_hvo, project)
+
+
+def resolve_phoneme(phoneme_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve a phoneme reference to an IPhPhoneme object.
+
+    Args:
+        phoneme_or_hvo: Either an IPhPhoneme object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        IPhPhoneme object or None if not found
+    """
+    return resolve_object(phoneme_or_hvo, project)
+
+
+def resolve_natural_class(nc_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve a natural class reference to an IPhNaturalClass object.
+
+    Args:
+        nc_or_hvo: Either an IPhNaturalClass object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        IPhNaturalClass object or None if not found
+    """
+    return resolve_object(nc_or_hvo, project)
+
+
+def resolve_environment(env_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve a phonological environment reference to an IPhEnvironment object.
+
+    Args:
+        env_or_hvo: Either an IPhEnvironment object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        IPhEnvironment object or None if not found
+    """
+    return resolve_object(env_or_hvo, project)
+
+
+def resolve_allomorph(allomorph_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve an allomorph reference to an IMoForm object.
+
+    Args:
+        allomorph_or_hvo: Either an IMoForm object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        IMoForm object or None if not found
+    """
+    return resolve_object(allomorph_or_hvo, project)
+
+
+def resolve_possibility(poss_or_hvo: Union[Any, HVO], project: Any) -> Optional[Any]:
+    """
+    Resolve a possibility list item reference to an ICmPossibility object.
+
+    Args:
+        poss_or_hvo: Either an ICmPossibility object or its HVO
+        project: The FLExProject instance
+
+    Returns:
+        ICmPossibility object or None if not found
+    """
+    return resolve_object(poss_or_hvo, project)
+
+
 __all__ = [
+    # Phase 1 resolvers
     'resolve_object',
     'resolve_text',
     'resolve_paragraph',
     'resolve_segment',
     'resolve_wordform',
     'resolve_analysis',
+
+    # Phase 2 resolvers
+    'resolve_pos',
+    'resolve_phoneme',
+    'resolve_natural_class',
+    'resolve_environment',
+    'resolve_allomorph',
+    'resolve_possibility',
 ]

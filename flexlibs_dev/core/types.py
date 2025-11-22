@@ -12,6 +12,8 @@ from typing import Any, Union, Optional, Protocol, TypeVar
 
 
 # Type aliases for FLEx objects (to be replaced with actual imports when integrated)
+
+# Phase 1: Text & Interlinear types
 IText = Any
 IStText = Any
 IStTxtPara = Any
@@ -20,11 +22,33 @@ IAnalysis = Any
 IWfiWordform = Any
 IWfiAnalysis = Any
 IWfiGloss = Any
+IWfiMorphBundle = Any
 ICmMedia = Any
 ICmFile = Any
 INote = Any
 ICmBaseAnnotation = Any
 ICmTranslation = Any
+
+# Phase 2: Grammar & Morphology types
+IPartOfSpeech = Any  # Parts of speech
+ICmPossibility = Any  # Generic possibility list item (used for many things)
+ICmPossibilityList = Any  # Lists in FLEx
+IPhPhoneme = Any  # Phonemes
+IPhCode = Any  # Phoneme codes/representations
+IPhNaturalClass = Any  # Natural classes of phonemes
+IPhEnvironment = Any  # Phonological environments
+IMoForm = Any  # Morphological forms (allomorphs)
+IMoMorphType = Any  # Types of morphs (prefix, suffix, etc.)
+IMoMorphRule = Any  # Morphological rules
+IMoStratum = Any  # Morphological strata
+IMoInflClass = Any  # Inflection classes
+IMoInflAffixSlot = Any  # Affix slots for templates
+IFsFeatStruc = Any  # Feature structures
+IFsFeatureDefn = Any  # Feature definitions
+IFsSymFeatVal = Any  # Symbolic feature values
+ILexEntry = Any  # Lexicon entries
+ILexSense = Any  # Lexical senses
+IMoMorphSynAnalysis = Any  # Morphosyntactic analysis (MSA)
 
 
 # Generic type variable for objects or HVOs
@@ -75,15 +99,22 @@ class FlexProject(Protocol):
         ...
 
 
-# Common return types
+# Common return types - Phase 1
 OptionalText = Optional[IText]
 OptionalParagraph = Optional[IStTxtPara]
 OptionalSegment = Optional[ISegment]
 OptionalWordform = Optional[IWfiWordform]
+OptionalAnalysis = Optional[IWfiAnalysis]
+
+# Common return types - Phase 2
+OptionalPOS = Optional[IPartOfSpeech]
+OptionalPhoneme = Optional[IPhPhoneme]
+OptionalNaturalClass = Optional[IPhNaturalClass]
+OptionalAllomorph = Optional[IMoForm]
 
 
 __all__ = [
-    # Type aliases
+    # Phase 1 Type aliases
     'IText',
     'IStText',
     'IStTxtPara',
@@ -92,11 +123,33 @@ __all__ = [
     'IWfiWordform',
     'IWfiAnalysis',
     'IWfiGloss',
+    'IWfiMorphBundle',
     'ICmMedia',
     'ICmFile',
     'INote',
     'ICmBaseAnnotation',
     'ICmTranslation',
+
+    # Phase 2 Type aliases
+    'IPartOfSpeech',
+    'ICmPossibility',
+    'ICmPossibilityList',
+    'IPhPhoneme',
+    'IPhCode',
+    'IPhNaturalClass',
+    'IPhEnvironment',
+    'IMoForm',
+    'IMoMorphType',
+    'IMoMorphRule',
+    'IMoStratum',
+    'IMoInflClass',
+    'IMoInflAffixSlot',
+    'IFsFeatStruc',
+    'IFsFeatureDefn',
+    'IFsSymFeatVal',
+    'ILexEntry',
+    'ILexSense',
+    'IMoMorphSynAnalysis',
 
     # Generic types
     'ObjectOrHVO',
@@ -107,9 +160,16 @@ __all__ = [
     'FlexObject',
     'FlexProject',
 
-    # Optional types
+    # Phase 1 Optional types
     'OptionalText',
     'OptionalParagraph',
     'OptionalSegment',
     'OptionalWordform',
+    'OptionalAnalysis',
+
+    # Phase 2 Optional types
+    'OptionalPOS',
+    'OptionalPhoneme',
+    'OptionalNaturalClass',
+    'OptionalAllomorph',
 ]

@@ -432,3 +432,85 @@ This refactoring establishes a solid foundation for the Complete Data Access ini
 - QC Agent review
 - FLEx API integration
 - Expansion to additional clusters
+
+---
+
+## QC Review Fixes (2025-11-22)
+
+### P0 Critical Issues Fixed:
+
+#### 1. Missing text_ops Module Files
+**Issue**: Files `text_core.py`, `text_advanced.py`, and `paragraph_crud.py` were missing from the `text_ops/` directory.
+
+**Fix Applied**:
+```bash
+git checkout claude/cluster-text-ops-1.1-1.3-013mrWNEJ6GpYcbeRNdFuFBi -- flexlibs_dev/text_ops/
+```
+
+**Actions Taken**:
+1. Merged text_ops files from Agent 1's branch
+2. Applied refactoring to use core utilities:
+   - Replaced local `IText`, `IStText`, `IStTxtPara` type definitions with imports from `core.types`
+   - Replaced `_resolve_text()` and `_resolve_paragraph()` helper methods with `core.resolvers` functions
+   - Replaced generic `ValueError`/`RuntimeError` with `ObjectNotFoundError`, `DuplicateObjectError`, etc.
+   - Replaced `NotImplementedError` with `NotImplementedYetError` (backward compatible)
+   - Added validation using `validate_non_empty_string()`, `validate_object_exists()`, `validate_index_in_range()`
+
+**Verification**:
+```bash
+$ python3 -c "from flexlibs_dev.text_ops import *; print('text_ops OK')"
+text_ops OK ✓
+```
+
+#### 2. Missing 'Any' Import in paragraph_advanced.py
+**Issue**: Lines 95 and 131 used `Any` type without importing it.
+
+**Fix Applied**:
+```python
+# Before
+from typing import Dict, List, Optional, Union
+
+# After
+from typing import Any, Dict, List, Optional, Union
+```
+
+**Verification**: Module imports successfully without NameError.
+
+#### 3. Missing 'Any' Import in segment_ops.py
+**Issue**: Line 23 used `Any` type without importing it.
+
+**Fix Applied**:
+```python
+# Before
+from typing import Generator, List, Optional, Union
+
+# After
+from typing import Any, Generator, List, Optional, Union
+```
+
+**Verification**: Module imports successfully without NameError.
+
+#### 4. Integration Tests Failed
+**Issue**: Tests failed due to missing imports from text_ops module.
+
+**Fix Applied**: After merging and refactoring text_ops files, all integration tests pass.
+
+**Test Results**:
+```bash
+$ python -m unittest flexlibs_dev.tests.test_integration -v
+Ran 29 tests in 0.005s
+OK ✓
+```
+
+### Files Modified in QC Fix:
+- `text_ops/text_core.py` - Merged and refactored
+- `text_ops/text_advanced.py` - Merged and refactored
+- `text_ops/paragraph_crud.py` - Merged and refactored
+- `paragraph_segment_ops/paragraph_advanced.py` - Added `Any` import
+- `paragraph_segment_ops/segment_ops.py` - Added `Any` import
+
+### Verification Summary:
+- ✅ All modules import without errors
+- ✅ All 29 integration tests pass
+- ✅ Full test suite passes
+- ✅ No P0 blocking issues remain

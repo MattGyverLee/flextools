@@ -8,7 +8,7 @@ Author: FlexTools Development Team
 Date: 2025-11-22
 """
 
-from typing import Generator, List, Optional, Union
+from typing import Any, Generator, List, Optional, Union
 
 from ..core import (
     ISegment,

@@ -1,0 +1,43 @@
+Phase,Cluster,Name,Week,Status,Priority,Story Points,Methods,Dependencies,Assignee,Milestone
+0,0.1,Development Infrastructure,1,Not Started,Critical,8,0,None,TBD,M0
+0,0.2,Testing & CI/CD Framework,2,Not Started,Critical,8,0,0.1,TBD,M0
+0,0.3,Documentation & Templates,2,Not Started,Critical,5,0,0.1,TBD,M0
+1,1.1,Core Text Operations,3,Not Started,High,8,8,0.3,TBD,M1
+1,1.2,Advanced Text Operations,3,Not Started,High,5,6,1.1,TBD,M1
+1,1.3,Paragraph CRUD Operations,4,Not Started,High,8,8,1.1,TBD,M1
+1,1.4,Paragraph Advanced Operations,4,Not Started,High,5,5,1.3,TBD,M1
+1,1.5,Segment Operations,5,Not Started,High,8,9,1.3,TBD,M1
+1,1.6,Wordform CRUD Operations,6,Not Started,High,8,10,1.5,TBD,M1
+1,1.7,Wordform Advanced Operations,6,Not Started,High,5,6,1.6,TBD,M1
+1,1.8,Analysis CRUD Operations,7,Not Started,High,8,11,1.6,TBD,M1
+1,1.9,MorphBundle Operations,7-8,Not Started,High,8,10,1.8,TBD,M1
+2,2.1,Parts of Speech CRUD,9,Not Started,Medium-High,8,10,1.9,TBD,M2
+2,2.2,POS Advanced Operations,9,Not Started,Medium-High,5,6,2.1,TBD,M2
+2,2.3,Grammatical Categories,9,Not Started,Medium-High,5,7,2.1,TBD,M2
+2,2.4,Phoneme CRUD Operations,10,Not Started,Medium-High,8,10,2.3,TBD,M2
+2,2.5,Phoneme Advanced Operations,10,Not Started,Medium-High,5,6,2.4,TBD,M2
+2,2.6,Natural Class Operations,11,Not Started,Medium-High,8,9,2.4,TBD,M2
+2,2.7,Phonological Environment,11,Not Started,Medium-High,5,7,2.6,TBD,M2
+2,2.8,Allomorph Operations,12,Not Started,Medium-High,8,10,2.7,TBD,M2
+2,2.9,Morphology Rules,13,Not Started,Medium-High,8,11,2.8,TBD,M2
+2,2.10,Inflection Classes & Features,13-14,Not Started,Medium-High,8,12,2.9,TBD,M2
+3,3.1,Custom List CRUD,15,Not Started,Medium,8,10,2.10,TBD,M3
+3,3.2,List Item Operations,15,Not Started,Medium,8,10,3.1,TBD,M3
+3,3.3,List Hierarchy & Ordering,16,Not Started,Medium,5,6,3.2,TBD,M3
+3,3.4,Media File Operations,16,Not Started,Medium,8,9,3.1,TBD,M3
+3,3.5,External Link Operations,17,Not Started,Medium,5,6,3.4,TBD,M3
+3,3.6,Enhanced Writing System Operations,17,Not Started,Medium,5,8,3.5,TBD,M3
+3,3.7,Publication & Filter Operations,18,Not Started,Medium,5,11,3.6,TBD,M3
+4,4.1,Scripture Book Operations,19,Not Started,Low-Medium,8,8,3.7,TBD,M7
+4,4.2,Scripture Section Operations,19,Not Started,Low-Medium,5,7,4.1,TBD,M7
+4,4.3,Scripture Notes & Translations,20,Not Started,Low-Medium,5,8,4.2,TBD,M7
+4,4.4,Discourse Chart Operations,20,Not Started,Low-Medium,5,6,4.3,TBD,M7
+4,4.5,Constituent Chart Details,21,Not Started,Low-Medium,5,7,4.4,TBD,M7
+4,4.6,Anthropology Categories,21,Not Started,Low-Medium,5,8,4.5,TBD,M7
+4,4.7,Time/Season Operations,21,Not Started,Low-Medium,3,6,4.6,TBD,M7
+4,4.8,Notebook Record Operations,22,Not Started,Low-Medium,8,8,4.7,TBD,M7
+4,4.9,Event & Research Operations,22,Not Started,Low-Medium,5,7,4.8,TBD,M7
+4,4.10,Advanced Phonology Rules,22,Not Started,Low-Medium,5,7,4.9,TBD,M7
+4,4.11,Advanced Morphology,23,Not Started,Low-Medium,5,6,4.10,TBD,M7
+4,4.12,Lexical Relations,23,Not Started,Low-Medium,5,6,4.11,TBD,M7
+4,4.13,Remaining Advanced Features,23-24,Not Started,Low-Medium,8,12,4.12,TBD,M7

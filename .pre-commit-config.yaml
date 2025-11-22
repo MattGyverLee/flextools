@@ -1,0 +1,141 @@
+# Pre-commit hooks for FlexTools Complete Data Access Initiative
+# Install: pip install pre-commit
+# Setup: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Black - Python code formatter
+  - repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+      - id: black
+        name: Format code with Black
+        language_version: python3
+        args: ['--line-length=88']
+        files: ^flexlibs_dev/.*\.py$
+
+  # Flake8 - Python linter
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        name: Lint code with Flake8
+        args:
+          - '--max-line-length=88'
+          - '--extend-ignore=E203,W503'  # Conflicts with Black
+          - '--max-complexity=10'
+        files: ^flexlibs_dev/.*\.py$
+
+  # isort - Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: Sort imports with isort
+        args: ['--profile', 'black', '--line-length', '88']
+        files: ^flexlibs_dev/.*\.py$
+
+  # Mypy - Static type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.0
+    hooks:
+      - id: mypy
+        name: Type check with Mypy
+        args:
+          - '--ignore-missing-imports'
+          - '--no-strict-optional'
+          - '--warn-redundant-casts'
+          - '--warn-unused-ignores'
+        files: ^flexlibs_dev/.*\.py$
+        additional_dependencies: ['types-all']
+
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+        name: Remove trailing whitespace
+
+      # Ensure files end with newline
+      - id: end-of-file-fixer
+        name: Fix end of files
+
+      # Check YAML files
+      - id: check-yaml
+        name: Validate YAML files
+        args: ['--safe']
+
+      # Check for merge conflicts
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+
+      # Check for large files
+      - id: check-added-large-files
+        name: Check for large files
+        args: ['--maxkb=500']
+
+      # Check JSON files
+      - id: check-json
+        name: Validate JSON files
+
+      # Check TOML files
+      - id: check-toml
+        name: Validate TOML files
+
+      # Fix Python encoding pragma
+      - id: fix-encoding-pragma
+        name: Fix encoding pragma
+        args: ['--remove']
+
+      # Check for debugger imports
+      - id: debug-statements
+        name: Check for debug statements
+
+      # Check docstring is first
+      - id: check-docstring-first
+        name: Check docstring is first
+
+  # Pytest check - ensure tests can be collected
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: Check tests can be collected
+        entry: pytest
+        args: ['--collect-only', '--quiet']
+        language: system
+        pass_filenames: false
+        files: ^flexlibs_dev/tests/.*\.py$
+        stages: [commit]
+        always_run: false  # Only run when test files change
+
+# Global configuration
+default_language_version:
+  python: python3
+
+# Don't run on these files
+exclude: |
+  (?x)^(
+      .*/__pycache__/.*|
+      .*\.pyc$|
+      .*\.pyo$|
+      .*\.egg-info/.*|
+      .*/build/.*|
+      .*/dist/.*|
+      .*\.git/.*|
+      .*/\.venv/.*|
+      .*/venv/.*
+  )$
+
+# Configuration for CI
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: [pytest-check]  # Skip pytest in CI (runs separately)
+  submodules: false
